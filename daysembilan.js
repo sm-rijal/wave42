@@ -135,3 +135,45 @@ const fruits = ['apple', 'banana', 'cherry', 'date', 'elderberry'];
 const keyword = 'an'; 
 const filteredFruits = fruits.filter(fruit => fruit.includes(keyword)); 
 console.log(filteredFruits);
+
+
+let contohNama =["mariana","day-day","djumi"];
+let sumber= 'a';
+let ganti= 'e';
+
+var newNama = contohNama.map(item=>item.replaceAll(sumber,ganti));
+console.log(newNama);
+
+
+let data1= "1"
+let data= "10"
+let tampungAngka=[];
+
+for (let j=Number(data1);j<=data;j++)
+{
+    tampungAngka.push(j);
+}
+
+let genap=0 
+let ganjil=0
+let tampungGen=[];
+let tampungGan=[];
+//console.log(typeof ganjil); cek tipe data
+let hitAngka = tampungAngka.map((item)=>
+{
+    if(item%2==0)
+    {
+        genap=genap+item;
+        tampungGen.push(item)
+        return genap;
+    }
+    else
+    {
+        ganjil=ganjil+item;
+        tampungGan.push(item);
+        return ganjil;
+    }
+})
+
+console.log('data ganjil',tampungGan, '=', ganjil);
+console.log('data genap',tampungGen, '=' ,genap);
