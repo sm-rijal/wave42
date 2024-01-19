@@ -102,8 +102,6 @@ async function getDataUsers(){
 getDataUsers()
 
 
-function renderUsers(){}
-
 if(isLoading){
     document.getElementById("isLoading").innerHTML = "Loading . . . "
 }
