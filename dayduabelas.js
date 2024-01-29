@@ -58,36 +58,17 @@ async function getDataUsers(){
     try {
         
         isLoading = true;
-        const response = await fetch("https://jsonplaceholder.typicode.com/users")
+        const response = await fetch("http://localhost:3000/products")
         const users = await response.json()
         console.log('async/await',users);
         isLoading = false
         document.getElementById("isLoading").innerHTML = ''
-        // for(let i = 0; i < users.length; i++){
-        //     document.getElementById("content").innerHTML += 
-        //     `
-        //         <ul>
-        //             <li>${users[i].name}</li>
-        //         </ul>
-        //     `
-        // }
-
-        // menggunakan data sendiri
-        // const users = [
-        //     {
-        //         name: "",
-        //         email: ""
-        //     },
-
-        // ]
 
         users.map((item) => {
             document.getElementById("content").innerHTML += 
             `
                 <ul>
-                    <li>Nama: ${item.name}</li>
-                    <li>Email: ${item.email}</li>
-                    <li>Alamat: ${item.address.city}</li>
+                    <li>Nama: ${item.nama}</li>
                 </ul>
             `
         })
