@@ -51,25 +51,74 @@
 
 // getUsers()
 
-// async/await
+
+// async function fetchData (url) => {
+//     const response = await fetch(url)
+//     const data = await response.json()
+
+//     return data
+// }
+
+const fetchData = async (url) => {
+    const response = await fetch(url)
+    const data = await response.json()
+
+    return data
+}
+
 
 let isLoading = false
+
 async function getDataUsers(){
     try {
         
         isLoading = true;
-        const response = await fetch("http://localhost:3000/products")
-        const users = await response.json()
-        console.log('async/await',users);
+        const users = await fetchData("http://localhost:3000/users")
+        isLoading = false;
+        renderUsers(users);
+        
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
+
+function renderUsers(users){
+    document.getElementById("isLoading").innerHTML = ''
+    users.map((item) => {
+        document.getElementById("content").innerHTML += 
+        `
+            <table border=1>
+                <tr>
+                    <td>${item.nama}</td>
+                    <td>${item.alamat}</td>
+                </tr>
+            </table>
+        `
+    })
+}
+
+async function getDataProducts(){
+    try {
+        
+        isLoading = true;
+        // const response = await fetch("http://localhost:3000/products")
+        // const products = await response.json()
+        const products = await fetchData("http://localhost:3000/products")
+        console.log('data products',products);
         isLoading = false
         document.getElementById("isLoading").innerHTML = ''
 
-        users.map((item) => {
-            document.getElementById("content").innerHTML += 
+        products.map((item) => {
+            document.getElementById("content2").innerHTML += 
             `
-                <ul>
-                    <li>Nama: ${item.nama}</li>
-                </ul>
+                <table border=1>
+                    <tr>
+                        <td>${item.nama}</td>
+                        <td>${item.harga}</td>
+                    </tr>
+                </table>
             `
         })
 
@@ -81,6 +130,7 @@ async function getDataUsers(){
 }
 
 getDataUsers()
+getDataProducts()
 
 
 if(isLoading){
