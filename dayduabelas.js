@@ -59,6 +59,23 @@
 //     return data
 // }
 
+// const data = []
+
+// function kirimData(){
+//     const nama = document.getElementById("nama").value
+//     const alamat = document.getElementById("alamat").value
+//     console.log(nama)
+
+//     const body = {
+//         nama: nama,
+//         alamat: alamat
+//     }
+
+//     data.push(body)
+    
+//     console.log(data);
+// }
+
 const fetchData = async (url) => {
     const response = await fetch(url)
     const data = await response.json()
